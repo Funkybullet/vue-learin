@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <component v-bind:is="who"></component>
+        <button @click="changecomponent">123</button>
+    </div>
+    <script>
+        var componentA = {
+            template:`<div style="color:red">componentA</div>`
+        }
+        var componentB = {
+            template:`<div style="color:green">componentB</div>`
+        }
+        var componentC = {
+            template:`<div style="color:yellow">componentC</div>`
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                who:"componentA"
+            },
+            components:{
+                "componentA":componentA,
+                "componentB":componentB,
+                "componentC":componentC,
+
+            },
+            methods:{
+                changecomponent:function () {
+                    if (this.who=="componentA") {
+                        this.who="componentB"
+                    } else if (this.who=="componentB") {
+                        this.who="componentC"
+                    } else{
+                        this.who="componentA"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

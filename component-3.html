@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <bullet></bullet>
+    </div>
+    <script>
+        var funky = {
+            template:`<div style="color:green;">我是子组件</div>`
+        }
+        var bullet = {
+            template:`<div>
+                <p>我是父组件</p>
+                <funky></funky>
+                </div>`,
+            components:{
+                "funky":funky
+            }
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:"hello"
+            },
+            components:{
+                "bullet":bullet
+            }
+        })
+    </script>
+</body>
+</html>
